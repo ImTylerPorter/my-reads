@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListBooks from './ListBooks'
+import ListBooks from './components/ListBooks'
 import * as BooksAPI from './BooksAPI'
 
 
@@ -18,7 +18,6 @@ class App extends Component {
 
     listBooks(books) {
         this.setState({ books })
-        console.log(books)
     }
 
   render() {
