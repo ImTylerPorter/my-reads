@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import SingleBook from "./SingleBook";
-import escapeRegExp from "escape-string-regexp";
 import * as BooksAPI from "../BooksAPI";
 
 class ListBooks extends React.Component {
-	static propTypes: {
-		books: PropTypes.array.isRequired
-	};
 
 	state = {
 		currentlyReading: [],
@@ -27,10 +22,14 @@ class ListBooks extends React.Component {
 				: null;
 
 			const wr = new RegExp("wantToRead");
-			let wantToRead = books ? books.filter(book => wr.test(book.shelf)) : null;
+			let wantToRead = books 
+				? books.filter(book => wr.test(book.shelf)) 
+				: null;
 
 			const r = new RegExp("read");
-			let read = books ? books.filter(book => r.test(book.shelf)) : null;
+			let read = books 
+				? books.filter(book => r.test(book.shelf)) 
+				: null;
 
 			this.setState({ currentlyReading, wantToRead, read });
 		});

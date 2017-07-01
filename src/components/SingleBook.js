@@ -1,12 +1,22 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+
 
 class SingleBook extends React.Component {
+
+	static PropTypes = {
+		book: PropTypes.object.isRequired,
+		updateBookShelf: PropTypes.func.isRequired,
+	}
+
+
 	state = {
 		value: "none"
 	};
 
 	render() {
-		const { book } = this.props;
+		const { book, updateBookShelf } = this.props;
 
 		return (
 			<li>
@@ -22,7 +32,7 @@ class SingleBook extends React.Component {
 						/>
 						<div className="book-shelf-changer">
 							<select
-								onChange={e => this.props.updateBookShelf(book, e.target.value)}
+								onChange={e => updateBookShelf(book, e.target.value)}
 								value={book.shelf}
 							>
 								<option value="none" disabled>
@@ -46,5 +56,7 @@ class SingleBook extends React.Component {
 		);
 	}
 }
+
+
 
 export default SingleBook;
