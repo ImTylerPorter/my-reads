@@ -75,6 +75,7 @@ class ListBooks extends React.Component {
 						{this.buildShelf(read, "Read")}
 					</div>
 				</div>
+
 			</div>
 		);
 	}
