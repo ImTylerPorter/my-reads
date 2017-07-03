@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Route, Link} from 'react-router-dom';
+import { Route, Link } from "react-router-dom";
 import SingleBook from "./SingleBook";
 import * as BooksAPI from "../BooksAPI";
 import ListBooks from "./ListBooks";
 
 class SearchAndAdd extends React.Component {
-
 	static contextTypes = {
-	  router: React.PropTypes.func.isRequired
-	}
+		router: React.PropTypes.object.isRequired
+	};
 
 	state = {
 		books: [],
@@ -25,9 +24,9 @@ class SearchAndAdd extends React.Component {
 	updateBookShelf(book, shelf) {
 		BooksAPI.update(book, shelf)
 			.then(
-				() => 
+				() =>
 					shelf !== "none"
-						? alert(`${book.title} has been added to your shelf!`)
+						? this.context.router.history.push("/")
 						: null
 			)
 			.catch(() => alert("Something went wrong! Please try again!"));
@@ -75,8 +74,5 @@ class SearchAndAdd extends React.Component {
 		);
 	}
 }
-
-
-
 
 export default SearchAndAdd;

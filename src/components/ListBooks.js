@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import SingleBook from "./SingleBook";
 import * as BooksAPI from "../BooksAPI";
 
 class ListBooks extends React.Component {
-
 	state = {
 		currentlyReading: [],
 		wantToRead: [],
@@ -23,14 +22,12 @@ class ListBooks extends React.Component {
 				: null;
 
 			const wr = new RegExp("wantToRead");
-			let wantToRead = books 
-				? books.filter(book => wr.test(book.shelf)) 
+			let wantToRead = books
+				? books.filter(book => wr.test(book.shelf))
 				: null;
 
 			const r = new RegExp("read");
-			let read = books 
-				? books.filter(book => r.test(book.shelf)) 
-				: null;
+			let read = books ? books.filter(book => r.test(book.shelf)) : null;
 
 			this.setState({ currentlyReading, wantToRead, read });
 		});
@@ -52,7 +49,9 @@ class ListBooks extends React.Component {
 							<SingleBook
 								key={index}
 								book={book}
-								updateBookShelf={this.updateBookShelf.bind(this)}
+								updateBookShelf={this.updateBookShelf.bind(
+									this
+								)}
 							/>
 						)}
 					</ol>
@@ -77,13 +76,8 @@ class ListBooks extends React.Component {
 					</div>
 				</div>
 				<div className="open-search">
-                    <Link
-                        to='/search'
-                    >
-                        Add a book
-                    </Link>
-                </div>
-
+					<Link to="/search">Add a book</Link>
+				</div>
 			</div>
 		);
 	}
